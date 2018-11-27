@@ -12,9 +12,9 @@
 
 # Effect
 #### pictures1
-![img](./result/pictures1/stitch_image_cropped.JPG)
+![img](./results/pictures1/stitch_image_cropped.JPG)
 #### pictures2
-![img](./result/pictures2/stitch_image_cropped.JPG)
+![img](./results/pictures2/stitch_image_cropped.JPG)
 
 # Usage
 #### Step1:
