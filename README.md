@@ -6,3 +6,4 @@ Feature detection and matching using some classical algorithms
 - Sift
 	- Implementation(*./Sift*)
 	- 360 Panorama(*./Application/360 Panorama*)
+	- Face Recognition via Eigenface(*./Application/Face Recognition*)
