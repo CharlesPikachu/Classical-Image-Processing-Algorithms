@@ -4,14 +4,14 @@ Author:
 Function:
     Detect and recognize faces in a image.
 Input:
-    -image: 
-    -faces_matrix: 
-    -eigenfaces: 
-    -FACESIZE: 
+    -image: the image need to be detected.
+    -faces_matrix: the face dataset.
+    -eigenfaces: the eigenface of 'dataset' obtained by PCA.
+    -FACESIZE: all roi will be resize to FACESIZE.
 Output:
-    -face_coordinates: 
-    -dist_det: 
-    -dist_rec: 
+    -face_coordinates: the coordinate and size of a detected face.
+    -dist_det: the distance between the croped roi and its reconstruct 'face'.
+    -dist_rec: the matched face in the dataset and the corresponding distance.
 %}
 function [face_coordinates, dists_det, dists_rec] = detector(image, faces_matrix, eigenfaces, FACESIZE)
 face_coordinates = [];
@@ -23,7 +23,7 @@ stride = 4;
 thresh_det = 0.24;
 thresh_rec = 0.21;
 [faces_matrix_center, faces_matrix_mu] = centerlizeData(faces_matrix);
-faces_matrix_construct = faces_matrix_center * eigenfaces * eigenfaces';
+faces_matrix_reconstruct = faces_matrix_center * eigenfaces * eigenfaces';
 if length(size(image)) == 3
     image = rgb2gray(image);
 end
@@ -46,7 +46,7 @@ for i = 1: 7
             roi_reconstruct = roi_project * eigenfaces';
             dist_det = sum(abs(roi_reconstruct - roi_center)) / sum(roi_vector);
             if dist_det < thresh_det
-                dist_rec = bsxfun(@minus, faces_matrix_construct, roi_reconstruct);
+                dist_rec = bsxfun(@minus, faces_matrix_reconstruct, roi_reconstruct);
                 dist_rec = sum(abs(dist_rec), 2) / sum(roi_vector);
                 [dist_rec, dist_rec_idx] = sort(dist_rec);
                 if dist_rec(1) < thresh_rec

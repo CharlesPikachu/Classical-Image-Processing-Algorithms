@@ -17,11 +17,11 @@
 ![img](./results/pictures2/stitch_image_cropped.JPG)
 
 # Usage
-#### Step1:
+#### Step1
 ```sh
-Modify <line13~18> according to your needs.
+Modify <line13~18> in <main.m> according to your needs.
 ```
-#### Step2:
+#### Step2
 ```sh
 Run main.m to get the result.
 ```

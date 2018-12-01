@@ -11,11 +11,11 @@ The version is a bad implementation, I would improve it when I'm free.
 ![img](./effect/processed.png)
 
 # Usage
-#### Step1:
+#### Step1
 ```sh
 Modify the image_path in line7 of test.m.
 ```
-#### Step2:
+#### Step2
 ```sh
 Run test.m to get the result.
 ```

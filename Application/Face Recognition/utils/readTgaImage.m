@@ -13,6 +13,11 @@ if(~isstruct(info))
     info = readTgaHeader(info);
 end
 fid = fopen(info.Filename, 'rb', 'l');
+if(fid < 0)
+    fprintf('could not open file %s\n', info.Filename);
+    return
+end
+fseek(fid, info.HeaderSize, 'bof');
 bytesp = ceil(info.Depth) / 8;
 npixels = info.Width * info.Height * bytesp;
 if(~info.Rle)
